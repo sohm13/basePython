@@ -5,6 +5,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+*.sql
 
 # C extensions
 *.so
@@ -29,7 +30,9 @@ share/python-wheels/
 *.egg
 MANIFEST
 lessons/
-.vscode
+.vscode/*
+*.vscode/*
+!.vscode/settings.json
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -141,3 +144,4 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+.vscode/settings.json

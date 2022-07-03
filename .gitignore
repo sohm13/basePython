@@ -33,6 +33,8 @@ lessons/
 .vscode/*
 *.vscode/*
 !.vscode/settings.json
+docker-compose.yml
+settings.json
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -145,3 +147,4 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 .vscode/settings.json
+

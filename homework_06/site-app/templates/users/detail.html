@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+detail
+{% endblock %}
+
+{% block body %}
+    <ul>
+        <li> name: {{details.user.name}}</li>
+        <li> username: {{details.user.username}}</li>
+        <li> email: {{details.user.email}}</li>
+    </ul>
+
+    <h3> Posts: </h3>
+    <ul>
+        {% for post in details.posts%} 
+           <li> 
+            {{post.title}}
+            <div class='container-left' >
+            <br>
+            {{post.body}}
+            </div>
+            
+            </li>
+        {% endfor %}
+    </ul>
+    
+
+<div>
+    <a href="{{url_for('users_app.add_post', user_id=details.user_id) }}"> add post </a>
+</div>
+
+{% endblock %}

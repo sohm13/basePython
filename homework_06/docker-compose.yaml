@@ -1,0 +1,40 @@
+version: "3.9"
+
+services:
+  site:
+    build:
+      context: .
+      dockerfile: ./docker-build/site/Dockerfile
+    environment:
+      CONFIG: DevelopmentConfig
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://user:passw@db:5432/postgres
+
+    ports:
+      - "8000:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: passw
+      PGDATA: /var/lib/postgresql/data/pgdata
+    
+    ports: 
+      - "5432:5432"
+    
+    volumes:
+      - db-data:/var/lib/postgresql/data/pgdata
+    healthcheck:
+      test: ["CMD-SHELL", "db_isready"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    
+volumes:
+  db-data:
+
+  

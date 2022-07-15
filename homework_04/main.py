@@ -13,6 +13,7 @@
 - закрытие соединения с БД
 """
 
+import os
 import aiohttp, asyncio
 from sqlalchemy.ext.asyncio import  AsyncSession
 from sqlalchemy.exc import NoResultFound
@@ -83,7 +84,8 @@ async def async_main():
 
 
 def main():
-    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    if 'nt' in os.name:
+      asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
     asyncio.run(async_main())
 
 
